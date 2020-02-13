@@ -6,6 +6,10 @@
       "serviceId": "drive",
       "version": "v2"
     }, {
+      "userSymbol": "AdminDirectory",
+      "serviceId": "admin",
+      "version": "directory_v1"
+    }, {
       "userSymbol": "Gmail",
       "serviceId": "gmail",
       "version": "v1"
@@ -20,7 +24,6 @@
     "executeAs": "USER_DEPLOYING"
   },
   "exceptionLogging": "STACKDRIVER",
-  "oauthScopes": [
-    "https://www.googleapis.com/auth/admin.directory.group.readonly","https://www.googleapis.com/auth/admin.directory.user",
-    "https://www.googleapis.com/auth/calendar.addons.execute", "https://www.googleapis.com/auth/calendar.readonly", "https://www.googleapis.com/auth/drive", "https://www.googleapis.com/auth/drive.addons.metadata.readonly", "https://www.googleapis.com/auth/gmail.addons.current.action.compose", "https://www.googleapis.com/auth/gmail.addons.current.message.readonly", "https://www.googleapis.com/auth/gmail.addons.execute", "https://www.googleapis.com/auth/script.locale", "https://www.googleapis.com/auth/spreadsheets"]
+  "oauthScopes": ["https://www.googleapis.com/auth/userinfo.email", "https://www.googleapis.com/auth/admin.directory.group.readonly", "https://www.googleapis.com/auth/admin.directory.user", "https://www.googleapis.com/auth/calendar.addons.execute", "https://www.googleapis.com/auth/calendar.readonly", "https://www.googleapis.com/auth/drive", "https://www.googleapis.com/auth/drive.addons.metadata.readonly", "https://www.googleapis.com/auth/gmail.addons.current.action.compose", "https://www.googleapis.com/auth/gmail.addons.current.message.readonly", "https://www.googleapis.com/auth/gmail.addons.execute", "https://www.googleapis.com/auth/script.locale", "https://www.googleapis.com/auth/spreadsheets"],
+  "runtimeVersion": "V8"
 }
