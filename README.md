@@ -10,3 +10,7 @@ Công cụ G-suite Add-on giúp doanh nghiệp quản lý quy trình trình ký 
   ```
     clasp login 
    ```
+ 3. Build
+ ```
+    clasp push && open 
+ ```
