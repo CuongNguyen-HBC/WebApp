@@ -1,0 +1,54 @@
+<script>
+  $(document).ready(function(){
+    $('.tabs').tabs();
+    $('select').formSelect();
+    checkInfo();
+    submitFormMetaData()
+  });
+
+  function checkInfo(){
+    $('input[name="ho"]').focusout(function(){
+        var hoten = this.value + ' '+ $('input[name="ten"]').val()
+        $('#hoten-text').html(hoten)
+    })
+    $('input[name="ten"]').focusout(function(){
+        var hoten =  $('input[name="ho"]').val() + ' '+ this.value 
+        $('#hoten-text').html(hoten)
+    })
+    $('select[name="nhom"]').change(function(){
+        var nhom = this.value
+        $('#nhom-text').html(nhom)
+    })
+    $('input[name="sdt"]').focusout(function(){
+        var sdt = this.value
+        $('#sdt-text').html(sdt)
+    })
+    $('input[name="mst"]').focusout(function(){
+        var mst = this.value
+        $('#mst-text').html(mst)
+    })
+    $('input[type="checkbox"]').each(function(){
+        $(this).change(function(){
+            if($(this).prop('checked')){
+                const nganh = $('input:checkbox:checked').map(function(){
+                return $(this).val()
+                })
+                $("#nganh-text").html(Array.from(nganh).toString())
+            }
+            
+        })
+    })
+  }
+  function submitFormMetaData(){
+      $('#formMetaData').submit(function(e){
+        event.preventDefault()
+          google.script.run.appendSpreadsheet(this)
+           $('input[name="ho"]').val('')
+           $('input[name="ten"]').val('')
+           $('input[name="sdt"]').val('')
+           $('input[name="mst"]').val('')
+           $('input[type="checkbox"]').prop('checked',false)
+               
+      })
+  }
+</script>

@@ -1,75 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- JS -->
-    <!-- JQuery -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- Bootstrap tooltips -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
-    <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.9/js/mdb.min.js"></script>
-    <!-- AngularJS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    
-    <!-- CSS -->
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- Bootstrap core CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Material Design Bootstrap -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.9/css/mdb.min.css" rel="stylesheet">
-    <style type="text/css">
-    	.active{
-    		color: black !important;
-    	}
-    </style>
+     <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified JavaScript -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   </head>
 <body>
 	<div class="container-fluid">
-	<ul class="nav nav-tabs nav-justified md-tabs indigo rounded" id="myTabJust" role="tablist">
-  <li class="nav-item">
-    <a class="nav-link active" id="home-tab-just" data-toggle="tab" href="#home-just" role="tab" aria-controls="home-just"
-      aria-selected="true" style="color: #FFFFFF;">Home</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="profile-tab-just" data-toggle="tab" href="#profile-just" role="tab" aria-controls="profile-just"
-      aria-selected="false" style="color: #FFFFFF;">Profile</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="contact-tab-just" data-toggle="tab" href="#contact-just" role="tab" aria-controls="contact-just"
-      aria-selected="false" style="color: #FFFFFF;">Contact</a>
-  </li>
-</ul>
-<div class="tab-content card pt-5" id="myTabContentJust">
-  <div class="tab-pane fade show active" id="home-just" role="tabpanel" aria-labelledby="home-tab-just">
-  	<div class="container">
-  		<div class="row"></div>
-  	</div>
-  </div>
-  <div class="tab-pane fade" id="profile-just" role="tabpanel" aria-labelledby="profile-tab-just">
-    <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1
-      labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft
-      beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad
-      vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar
-      helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes
-      anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party
-      scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
-  </div>
-  <div class="tab-pane fade" id="contact-just" role="tabpanel" aria-labelledby="contact-tab-just">
-    <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro
-      fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone
-      skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings
-      gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork
-      biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl
-      craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
-  </div>
-</div>
+		<ul class="tabs tabs-fixed-width tab-demo z-depth-1">
+		  <li class="tab"><a class="active" href="#test1">Metadata</a></li>
+		  <li class="tab"><a href="#test2">Test 2</a></li>
+		  <li class="tab"><a href="#test3">Test 3</a></li>
+		</ul>
+		<div id="test1" class="col s12">
+			<div class="row">
+				<form class="col s6 z-depth-5" id="formMetaData" >
+					<h4 class="center-align   light-green-text">Metadata Nhập thông tin khách hàng</h4>
+					 <div class="row">
+				        <div class="input-field col s6">
+				          <i class="material-icons prefix">account_circle</i>
+				          <input id="icon_prefix" type="text" class="validate" name="ho">
+				          <label for="icon_prefix">Họ</label>
+				        </div>
+				        <div class="input-field col s6">
+				          <i class="material-icons prefix">account_circle</i>
+				          <input type="text" class="validate" name="ten">
+				          <label >Tên</label>
+				        </div>
+				      </div>
+				      <div class="row">
+				        <div class="input-field col s6">
+				          <i class="material-icons prefix">business</i>
+				          <select name="nhom">
+				          	<option>Chọn nhóm khách hàng ...</option>
+				          	<option value="Đại lý">Đại lý</option>
+				          	<option value="Cá nhân">Cá nhân</option>
+				          </select>
+				        </div>
+				        <div class="input-field col s6">
+				          <i class="material-icons prefix">collections</i>
+				          <input type="text" class="validate" name="mst">
+				          <label>Mã số thuế</label>
+				        </div>
+				      </div>
+				      <div class="row">
+				        <div class="input-field col s6">
+				          <i class="material-icons prefix">phone</i>
+				          <input type="tel" name="sdt" class="validate">
+				          <label>Số điện thoại</label>
+				        </div>
+				       
+				      </div>
+				      <div class="row">
+				        <div class="col s12">
+				          <i class="material-icons prefix">format_list_bulleted</i> <span style="margin-left: 10px;">Ngành hàng</span>	
+				         <div class="input-field ">
+				         	<div class="col s3">
+					         	<label>
+							        <input type="checkbox" class="filled-in" name="nganh" />
+							        <span>Máy công nghiệp</span>
+						    	</label>
+				         	</div>
+				         	<div class="col s3">
+					         	<label>
+							        <input type="checkbox" class="filled-in" name="nganh" />
+							        <span>Máy công nghiệp</span>
+						    	</label>
+				         	</div>
+				          </div>
+				          <div class="col s3">
+					         	<label>
+							        <input type="checkbox" class="filled-in" name="nganh" value="cái gì đó" />
+							        <span>Máy công nghiệp</span>
+						    	</label>
+				         	</div>
+				         	<div class="col s3">
+					         	<label>
+							        <input type="checkbox" class="filled-in" name="nganh" value="Mặt hàng khác" />
+							        <span>Máy công nghiệp</span>
+						    	</label>
+				         	</div>
+				         	<div class="col s3">
+					         	<label>
+							        <input type="checkbox" class="filled-in" name="nganh" value="Máy công nghiệp" />
+							        <span>Máy công nghiệp</span>
+						    	</label>
+				         	</div>
+				         	<div class="col s3">
+					         	<label>
+							        <input type="checkbox" class="filled-in" name="nganh" value="lâst" />
+							        <span>Máy công nghiệp</span>
+						    	</label>
+				         	</div>
+				        </div>
+				        <div class="input-field col s12 right-align">
+					         <button class="btn waves-effect yellow darken-3" type="submit" name="action">Gửi
+							    <i class="material-icons right">send</i>
+							 </button>
+				        </div>
+				        
+				      </div>
+				</form>
+				<!-- div 2 -->
+				    <div class="col s5 m5">
+				      <div class="card blue-grey darken-1">
+				        <div class="card-content white-text">
+				          <span class="card-title">Phiếu kiểm tra</span>
+				          <div class="container-fluid">
+				          	<div class="row">
+				          		<div class="col s12">
+				          			<div class="row">
+				          				<h5 class="col s4">Họ và tên: </h5><h5 class="light-green-text col s6" id="hoten-text"></h5>
+				          			</div>
+				          			<div class="row">
+				          				<h5 class="col s4">Nhóm khách hàng:</h5><h5 class="light-green-text col s6" id="nhom-text"></h5>
+				          			</div>
+				          			<div class="row">
+				          				<h5 class="col s4">Mã số thuế:</h5><h5 class="light-green-text col s6" id="mst-text"></h5>
+				          			</div>
+				          			<div class="row">
+				          				<h5 class="col s4">Số điện thoại:</h5><h5 class="light-green-text col s6" id="sdt-text"></h5>
+				          			</div>
+				          			<div class="row">
+				          				<h5 class="col s4">Ngành hàng: </h5><h5 class="light-green-text col s6" id="nganh-text"></h5>
+				          			</div>
+				          		</div>
+				          	</div>
+				          </div>
+				        </div>
+				        <div class="card-action">
+				          <a href="#">This is a link</a>
+				          <a href="#">This is a link</a>
+				        </div>
+				      </div>
+				    </div>
+				<!-- end div 2 -->
+			</div>
+		</div>
+		<div id="test2" class="col s12"><p>Test 2</p></div>
+		<div id="test3" class="col s12"><p>Test 4</p></div>
 	</div>
 	<!-- Form-login -->
-    
-
 </body>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <?!= include('page-js'); ?>
 </html>
