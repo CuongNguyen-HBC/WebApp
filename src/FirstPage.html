@@ -10,234 +10,211 @@
 <body>
 	<div class="container-fluid">
 		<ul class="tabs tabs-fixed-width tab-demo z-depth-1">
-		  <li class="tab"><a class="active" href="#test1">Metadata</a></li><!-- 
+		  <li class="tab"><a class="active" href="#test1">Tạo mã khách hàng</a></li><!-- 
 		  <li class="tab"><a href="#test2">Test 2</a></li>
 		  <li class="tab"><a href="#test3">Test 3</a></li> -->
 		</ul>
 		<div id="test1" class="col s12">
 			<div class="row">
-				<div class="col s6 m6 ">
+				<div class="col s8 m8 ">
 				      <div class="card  white z-depth-5">
 				        <div class="card-content white-text">
-				     <form id="formMetaData">
-					<h4 class="center-align   light-green-text">Metadata Nhập thông tin khách hàng</h4>
-					<h5 class="black-text bold">Người lập phiếu: <b><?= fullname ?> - <?= curemail ?></b></h5>
-					<h5 class="black-text bold">Công ty: <b><?= company ?></b></h5>
-					 <div class="row">
-				        <div class="input-field col s6">
-				          <i class="material-icons black-text prefix">account_circle</i>
-				          <input id="icon_prefix" type="text" class="validate" name="ho">
-				          <label for="icon_prefix">Họ <span class="red-text">(*)</span></label>
-				        </div>
-				        <div class="input-field col s6">
-				          <i class="material-icons  black-text prefix">account_circle</i>
-				          <input type="text" class="validate" name="ten">
-				          <label >Tên <span class="red-text">(*)</span></label>
+				        	<div class="row">
+				     <form id="formMetaData" class="col s12"> 
+					<h6 class="black-text bold"><b><?= fullname ?>- <?= curemail ?>
+					</b></h6>
+					<h6 class="black-text bold">Đơn vị: <b><?= company ?> </b></h6>
+					<div class="row">
+					  <div class="input-field col s6">
+						<i class="material-icons  black-text prefix">list</i>
+						<select name="GroupCode">
+							<option>Chọn nhóm khách hàng ...</option>
+							<option value = "02_Cust_Đại_Lý">02_Cust_Đại_Lý</option>
+							<option value = "03_Cust_Dự_Án">03_Cust_Dự_Án</option>
+							<option value = "04_Cust_Lẻ">04_Cust_Lẻ</option>
+							<option value = "05_Cust_Xuất_Khẩu">05_Cust_Xuất_Khẩu</option>
+						</select>
+					  </div>
+					  <div class="input-field col s6">
+						<i class="material-icons  black-text prefix">border_color</i>
+						<input type="text" class="validate" name="LicTradNum" placeholder="">
+						<label>Mã số thuế</label>
+					  </div>
+					</div>
+					<div class="row">
+				        <div class="input-field col s12">
+				          <i class="material-icons black-text prefix">group_work</i>
+				          <input id="icon_prefix" type="text" class="validate" name="CardName" placeholder="" >
+				          <label for="icon_prefix">Tên khách hàng <span class="red-text">(*)</span></label>
 				        </div>
 				      </div>
-				      <div class="row">
-				        <div class="input-field col s6">
-				          <i class="material-icons  black-text prefix">list</i>
-				          <select name="nhom">
-				          	<option>Chọn nhóm khách hàng ...</option>
-				          	<option value = "02_Cust_Đại_Lý">02_Cust_Đại_Lý</option>
-				          	<option value = "03_Cust_Dự_Án">03_Cust_Dự_Án</option>
-				          	<option value = "04_Cust_Lẻ">04_Cust_Lẻ</option>
-				          	<option value = "05_Cust_Xuất_Khẩu">05_Cust_Xuất_Khẩu</option>
-				          </select>
+					 <div class="row">
+				        <div class="input-field col s12">
+				          <i class="material-icons black-text prefix">account_circle</i>
+				          <input type="text" class="validate" name="Name" placeholder="">
+				          <label >Người đại diện<span class="red-text"> (*)</span></label>
 				        </div>
-				        <div class="input-field col s6">
-				          <i class="material-icons  black-text prefix">border_color</i>
-				          <input type="text" class="validate" name="mst">
-				          <label>Mã số thuế</label>
-				        </div>
-					  </div>
+				      </div>	
 					  <div class="row">
 				        <div class="input-field col s6">
 				          <i class="material-icons  black-text prefix">business</i>
-				          <select name="loaikh">
+				          <select name="CmpPrivate" required="">
 							  <option>Chọn ...</option>
-							  <option value="Company" disabled="">Company</option>
-							  <option value="Private" disabled="">Private</option>
+							  <option value="Tổ chức" >Tổ chức</option>
+							  <option value="Cá nhân" >Cá nhân</option>
 				          </select>
 				        </div>
 				        <div class="input-field col s6">
 				          <i class="material-icons  black-text prefix">local_printshop</i>
-				          <input type="text" class="validate" name="fax">
-				          <label>Fax</label>
+				          <input type="text" class="validate" name="Fax" placeholder="">
+				          <label class="active">Fax</label>
 				        </div>
 				      </div>
 				      <div class="row">
 				        <div class="input-field col s6">
 				          <i class="material-icons  black-text prefix">phone_iphone</i>
-				          <input type="tel" name="dtdd1" class="validate" required="">
-				          <label>DTDĐ 1 <span class="red-text">(*)</span></label>
+				          <input type="tel" name="Phone1" class="validate" required="" placeholder="">
+				          <label>Số điện thoại 1 <span class="red-text">(*)</span></label>
 						</div>
 						<div class="input-field col s6">
 							<i class="material-icons  black-text prefix">phone</i>
-							<input type="tel" name="dtb1" class="validate">
-							<label>Điện thoại cố định 1</label>
+							<input type="tel" name="Tel1" class="validate" placeholder="">
+							<label>Số điện thoại 2</label>
 						  </div>
 					  </div>
 					  <div class="row">
 				        <div class="input-field col s6">
 				          <i class="material-icons  black-text prefix">phone_iphone</i>
-				          <input type="tel" name="dtdd2" class="validate">
-				          <label>DTDĐ 2</label>
+				          <input type="tel" name="Phone2" class="validate" placeholder="">
+				          <label>Số điện thoại 3</label>
 						</div>
 						<div class="input-field col s6">
 							<i class="material-icons  black-text prefix">phone</i>
-							<input type="tel" name="dtb2" class="validate">
-							<label>Điện thoại cố định 2</label>
+							<input type="tel" name="Tel2" class="validate" placeholder="">
+							<label>Số điện thoại 4</label>
 						  </div>
 					  </div>
 					  <div class="row">
 				        <div class="input-field col s6">
 				          <i class="material-icons  black-text prefix">access_time</i>
-				          <select name="thoihanno">
+				          <select name="GroupNum">
 							<option>Thời hạn nợ ...</option>
-							<option value="10 ngày" disabled="true">10 ngày</option>
-							<option value="20 ngày" disabled="true">20 ngày</option>
-							<option value="30 ngày" disabled="true">30 ngày</option>
-							<option value="Thanh toán tiền mặt" disabled="true">Thanh toán tiền mặt</option>
-							<option value="Theo hợp đồng" disabled="true">Theo hợp đồng</option>
+							<option value="10 ngày" >10 ngày</option>
+							<option value="20 ngày" >20 ngày</option>
+							<option value="30 ngày" >30 ngày</option>
+							<option value="Thanh toán tiền mặt" >Thanh toán tiền mặt</option>
+							<option value="Theo hợp đồng" >Theo hợp đồng</option>
 						</select>
 						</div>
 						<div class="input-field input_inline col s6">
 							<i class="material-icons  black-text prefix">attach_money</i>
-							<input type="text" class="validate address" name="hanmucno">
+							<input type="text" class="validate address" name="CreditLine" placeholder="">
 				          <label class="active">Hạn mức công nợ ( triệu VNĐ)</label>
 						  </div>
 				      </div>
-				      <div class="row">
-				        <div class="input-field col s6">
-				          <i class="material-icons  black-text prefix">edit_location</i>
-				          <input type="text" class="validate address" name="sonha">
-				          	<label>Địa chỉ  giao dịch_Số/Bill to_Street No.</label>	
-						</div>
-						<div class="input-field input_inline col s6">
-							<i class="material-icons  black-text prefix">edit_location</i>
-							<input type="text" class="validate address" name="quanhuyen">
-				          	<label>Địa chỉ  giao dịch_Quận/Bill to_State </label>
-						  </div>
-				      </div>
-				      <div class="row">
-				        <div class="input-field col s6">
-				          <i class="material-icons  black-text prefix">edit_location</i>
-				          <input type="text" class="validate address" name="tenduong">
-				          	<label>Địa chỉ  giao dịch_Đường/Bill to_Street</label>	
-						</div>
-						<div class="input-field input_inline col s6">
-							<i class="material-icons  black-text prefix">edit_location</i>
-							<input type="text" class="validate address" name="tinhthanh">
-				          	<label>Địa chỉ  giao dịch_Tỉnh/Bill to_City</label>
-						  </div>
-				      </div>
-				      <div class="row">
-				        <div class="input-field col s6">
-				          <i class="material-icons  black-text prefix">edit_location</i>
-				          <input type="text" class="validate address" name="phuongxa">
-				          	<label>Địa chỉ  giao dịch_Phường/Bill to_Block</label>	
-						</div>
-						<div class="input-field input_inline col s6">
-							<i class="material-icons  black-text prefix">edit_location</i>
-							<input type="text" class="validate address" name="quocgia"><label>Địa chỉ  giao dịch_Quốc gia/Bill to_Country</label>	
-						  </div>
-				      </div>
-				      <div class="row">
-				        <div class="col s12">
-				          <i class="material-icons  black-text prefix">format_list_bulleted</i> <span style="margin-left: 10px; color: black;
-				          ">Ngành hàng</span>	
-				         <div class="input-field ">
-				         	<div class="col s3">
-					         	<label>
-							        <input type="checkbox" class="filled-in" name="nganh" />
-							        <span>Máy công nghiệp</span>
-						    	</label>
-				         	</div>
-				         	<div class="col s3">
-					         	<label>
-							        <input type="checkbox" class="filled-in" name="nganh" />
-							        <span>Máy công nghiệp</span>
-						    	</label>
-				         	</div>
+				      <!-- 
+				           -->
+				          <div class="row">
+				          		<div class="col s12" style="border: 1px solid black">
+				          			<h5 class="black-text"><i class="material-icons  black-text prefix">edit_location</i> Địa chỉ giao dịch</h5>
+				          			<div class="row">
+								        <div class="input-field col s6">
+								          <input type="text" class="validate address" name="StreetNo" placeholder="">
+								          	<label>Số địa chỉ (ví dụ: 350)</label>	
+										</div>
+										 <div class="input-field col s6">
+								          <input type="text" class="validate address" name="Street" placeholder="">
+								          	<label>Đường (ví dụ: Đường số 7)</label>	
+										</div>
+								      </div>
+								      <div class="row">
+								      	<div class="input-field col s6">
+								          <input type="text" class="validate address" name="Block" placeholder="">
+								          	<label>Phường (ví dụ: Phường Tân Tạo)</label>	
+										</div>
+								       <div class="input-field input_inline col s6">
+											<input type="text" class="validate address" name="State" placeholder="">
+								          	<label>Quận (ví dụ: Quận Bình Tân)</label>
+										  </div>
+										
+								      </div>
+								      <div class="row">
+								        <div class="input-field input_inline col s6">
+											<input type="text" class="validate address col s12" name="City" placeholder="">
+								          	<label>Tỉnh/Thành phố (ví dụ: TP.HCM)</label>
+										  </div>
+										<div class="input-field input_inline col s6">
+											<input type="text" class="validate address col s12" name="Country" placeholder=""><label>Quốc gia (ví dụ: VN)</label>	
+										  </div>
+
+								      </div>
+				          		</div>
 				          </div>
-				          <div class="col s3">
-					         	<label>
-							        <input type="checkbox" class="filled-in" name="nganh" value="cái gì đó" />
-							        <span>Máy công nghiệp</span>
-						    	</label>
-				         	</div>
-				         	<div class="col s3">
-					         	<label>
-							        <input type="checkbox" class="filled-in" name="nganh" value="Mặt hàng khác" />
-							        <span>Máy công nghiệp</span>
-						    	</label>
-				         	</div>
-				         	<div class="col s3">
-					         	<label>
-							        <input type="checkbox" class="filled-in" name="nganh" value="Máy công nghiệp" />
-							        <span>Máy công nghiệp</span>
-						    	</label>
-				         	</div>
-				         	<div class="col s3">
-					         	<label>
-							        <input type="checkbox" class="filled-in" name="nganh" value="lâst" />
-							        <span>Máy công nghiệp</span>
-						    	</label>
-				         	</div>
-				        </div>
+				      <div class="row">
 				        <div class="input-field col s12 right-align">
-					         <button class="btn waves-effect yellow darken-3" type="submit" name="action">Gửi
+					    <button class="btn waves-effect yellow darken-3 modal-trigger " href="#modal1" type="submit" name="action" 
+					         >Gửi
 							    <i class="material-icons right">send</i>
-							 </button>
+							 </button></a>
 				        </div>
 				        
 				      </div>
-				</form>
+				</form></div>
 				        </div>
 				      </div>
 				    </div>
 				
 				<!-- div 2 -->
-				    <div class="col s5 m5">
-				      <div class="card blue-grey darken-1">
-				        <div class="card-content white-text">
-				          <span class="card-title">Hiển thị trên hợp đồng</span>
+				    <div class="col s4 m4" style=" position:fixed; top:5%; right:0.5%; " >
+				      <div class="card blue-grey darken-1" >
+				        <div class="card-content white-text" >
+				          <span class="card-title" style="font-size: 20px;">Hiển thị trên hợp đồng</span>
 				          <div class="container-fluid">
 				          	<div class="row">
 				          		<div class="col s12">
 				          			<div class="row">
-				          				<h6 class="col s4">Họ và tên: </h6><h6 class="light-green-text col s6" id="hoten-text"></h6>
+				          				<h6 class="col s4" style="font-size: 15px">Người khách hàng</h6><h6 class="light-green-text col s6 CardName"></h6>
 				          			</div>
 				          			<div class="row">
-				          				<h6 class="col s4">Nhóm khách hàng:</h6><h6 class="light-green-text col s6" id="nhom-text"></h6>
+				          				<h6 class="col s4" style="font-size: 15px">Người đại diện </h6><h6 class="light-green-text col s6 Name" ></h6>
 				          			</div>
 				          			<div class="row">
-				          				<h6 class="col s4">Mã số thuế:</h6><h6 class="light-green-text col s6" id="mst-text"></h6>
+				          				<h6 class="col s4" style="font-size: 15px">Nhóm khách hàng:</h6><h6 class="light-green-text col s6 GroupCode" ></h6>
 				          			</div>
 				          			<div class="row">
-				          				<h6 class="col s4">Số điện thoại:</h6><h6 class="light-green-text col s6" id="sdt-text"></h6>
+				          				<h6 class="col s4" style="font-size: 15px">Mã số thuế:</h6><h6 class="light-green-text col s6 LicTradNum" ></h6>
 				          			</div>
 				          			<div class="row">
-				          				<h6 class="col s4">Ngành hàng: </h6><h6 class="light-green-text col s6" id="nganh-text"></h6>
+				          				<h6 class="col s4" style="font-size: 15px">Số điện thoại:</h6><h6 class="light-green-text col s6 Phone1" ></h6>
 				          			</div>
 				          			<div class="row">
-				          				<h6 class="col s4">Địa chỉ: </h6><h6 class="light-green-text col s6" id="address-text"></h6>
+				          				<h6 class="col s4" style="font-size: 15px">Địa chỉ: </h6><h6 class="light-green-text col s6" ></h6>
 				          			</div>
 				          			<div class="row">
-				          				<h6 class="col s4">Thời hạn nợ: </h6><h6 class="light-green-text col s6" id="thoihanno-text"></h6>
+				          				<h6 class="col s4" style="font-size: 15px">Thời hạn nợ: </h6><h6 class="light-green-text col s6 GroupNum" ></h6>
 				          			</div>
 				          			<div class="row">
-				          				<h6 class="col s4">Hạn mức công nợ: </h6><h6 class="light-green-text col s6" id="hanmucno-text"></h6>
+				          				<h6 class="col s4" style="font-size: 15px">Hạn mức công nợ: </h6><h6 class="light-green-text col s6 CreditLine" ></h6>
 				          			</div>
 				          		</div>
 				          	</div>
 				          </div>
 				        </div>
-				        <div class="card-action">
-				          <a href="#">This is a link</a>
-				          <a href="#">This is a link</a>
+				        <div class="card-action white-text">
+				          <div class="row">
+							  <div class="col s12">
+								  <h6>Thông tin khách hàng trên toàn HBC ( nếu có):</h6>
+							  	<div class="row">
+				          				<h6 class="col s4" style="font-size: 15px">Tên khách hàng: </h6><h6 class="light-green-text col s6" id="searchCardName"></h6>
+				          		</div>
+				          		<div class="row">
+				          				<h6 class="col s4" style="font-size: 15px">Mã số thuế:</h6><h6 class="light-green-text col s6" id="searchLicTradNum"></h6>
+				          			</div>
+				          			<div class="row">
+				          				<h6 class="col s4" style="font-size: 15px">Đang giao dịch với: </h6><h6 class="light-green-text col s6" id="searchCompany"></h6>
+				          		</div>
+							  </div>
+						  </div>
 				        </div>
 				      </div>
 				    </div>
@@ -248,9 +225,58 @@
 		<div id="test3" class="col s12"><p>Test 4</p></div> -->
 	</div>
 	<!-- Form-login -->
+	<!-- Modal popup -->
+	 <!-- Modal Trigger -->
+  
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Kiểm tra thông tin</h4>
+      <div class="card blue-grey darken-1" >
+				        <div class="card-content white-text" >
+				          <span class="card-title" style="font-size: 20px;">Hiển thị trên hợp đồng</span>
+				          <div class="container-fluid">
+				          	<div class="row">
+				          		<div class="col s12">
+				          			<div class="row">
+				          				<h6 class="col s4" style="font-size: 15px">Người khách hàng</h6><h6 class="light-green-text col s6 CardName" ></h6>
+				          			</div>
+				          			<div class="row">
+				          				<h6 class="col s4" style="font-size: 15px">Người đại diện </h6><h6 class="light-green-text col s6 Name" ></h6>
+				          			</div>
+				          			<div class="row">
+				          				<h6 class="col s4" style="font-size: 15px">Nhóm khách hàng:</h6><h6 class="light-green-text col s6 GroupCode" ></h6>
+				          			</div>
+				          			<div class="row">
+				          				<h6 class="col s4" style="font-size: 15px">Mã số thuế:</h6><h6 class="light-green-text col s6 LicTradNum" ></h6>
+				          			</div>
+				          			<div class="row">
+				          				<h6 class="col s4" style="font-size: 15px">Số điện thoại:</h6><h6 class="light-green-text col s6 Phone1" ></h6>
+				          			</div>
+				          			<div class="row">
+				          				<h6 class="col s4" style="font-size: 15px">Địa chỉ: </h6><h6 class="light-green-text col s6" ></h6>
+				          			</div>
+				          			<div class="row">
+				          				<h6 class="col s4" style="font-size: 15px">Thời hạn nợ: </h6><h6 class="light-green-text col s6 GroupNum"></h6>
+				          			</div>
+				          			<div class="row">
+				          				<h6 class="col s4" style="font-size: 15px">Hạn mức công nợ: </h6><h6 class="light-green-text col s6 CreditLine"></h6>
+				          			</div>
+				          		</div>
+				          	</div>
+				          </div>
+				        </div></div>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat btn">Hủy bỏ</a>
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat btn" id="xacnhan">Xác nhận</a>
+    </div>
+  </div>
+  <!-- end -->
 </body>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.js"></script>
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.js"></script> -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 	
     <?!= include('page-js'); ?>

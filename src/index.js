@@ -6,54 +6,45 @@ function doGet(e){
     var userProp = PropertiesService.getUserProperties()
     var curemail =  Session.getActiveUser().getEmail()
     var html = HtmlService.createTemplateFromFile('FirstPage')
+    var lictradnum = getLicTradNum()
+    html.lictradnum = lictradnum
     html.curemail = curemail
     html.company = getInfoCompany(curemail)
     html.fullname = getInfoName(curemail)
+    
  return html.evaluate()
 }
 
 function include(filename){
- return HtmlService.createHtmlOutputFromFile(filename).getContent()
+  var html = HtmlService.createHtmlOutputFromFile(filename).getContent()
+ return html
 }
-// function DriveTest(){
-//     var ggdrive = Drive.Drives.list().items
-//     Logger.log(ggdrive) 
-//    }
-function appendSpreadsheet(data){
-   const ho = data.ho
-    const ten = data.ten
-    const hoten = ho + ' ' + ten
-    const mst =  data.mst
-    const sdt =  data.sdt
-    const nhom = data.nhom
-    const nganh = (data.nganh == '' ) ? "" : data.nganh.toString() 
-    const loaikh= data.loaikh 
-    const dtdd1= data.dtdd1
-    const dtdd2= data.dtdd2
-    const dtb1= data.dtb1
-    const dtb2= data.dtb2
-    const thoihanno= data.thoihanno
-    const hanmucno = data.hanmucno
-    const fax= data.fax
-    //  Địa chỉ
-    const sonha= data.sonha
-    const tenduong= data.tenduong
-    const phuongxa= data.phuongxa
-    const quanhuyen= data.quanhuyen
-    const tinhthanh= data.tinhthanh
-    const quocgia= data.quocgia
-    const diahchi = sonha + ' '+ tenduong + ' '+phuongxa + ' '+quanhuyen + ' '+tinhthanh + ' '+quocgia 
-    var filename = 0
-    const getfolder = DriveApp.getFolderById('1uWM6zs3Pu50YaJgB5u5EAS632kFz9AFs')
-    const countFile = DriveApp.getFolderById('1uWM6zs3Pu50YaJgB5u5EAS632kFz9AFs').getFiles()
-    while(countFile.hasNext()){
-      Logger.log(countFile.next().getName())
-      filename++
-    }
-    const newFile =  SpreadsheetApp.create(filename)
-    const idsp = newFile.getId()
-    const store = SpreadsheetApp.openById(idsp).appendRow([hoten,mst,sdt,nhom,nganh,loaikh,dtb1,dtdd2,thoihanno,hanmucno,dtb2,dtdd1,fax,diahchi,Session.getActiveUser().getEmail()])
-    DriveApp.getFileById(idsp).makeCopy(++filename,getfolder)
-    DriveApp.getFileById(idsp).setTrashed(true)
-  SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/1B-cQYusdxcpzhvFsSFxaSyS7hURtG6NOLXKdvR7WAMw/edit#gid=0').getActiveSheet().appendRow([hoten,mst,sdt,nhom,nganh,loaikh,dtb1,dtdd2,thoihanno,hanmucno,dtb2,dtdd1,fax,diahchi,Session.getActiveUser().getEmail()])
+function appendSpreadsheet(data){  
+    const CardName              = data.CardName 
+    const GroupCode             = data.GroupCode
+    const GroupCode2            = GroupCode.split('_').shift()
+    const CmpPrivate            = data.CmpPrivate    
+    const LicTradNum            = data.LicTradNum     
+    const Phone1                = data.Phone1  
+    const Phone2                = data.Phone2
+    const Tel1                  = data.Tel1
+    const Tel2                  = data.Tel2
+    const Fax                   = data.Fax
+    const GroupNum              = data.GroupNum
+    const CreditLine            = data.CreditLine   
+    const StreetNo              = data.StreetNo
+    const Street                = data.Street   
+    const Block                 = data.Block
+    const State                 = data.State
+    const City                  = data.City
+    const Country               = data.Country   
+    const Name                  = data.Name
+    var   curemail              = Session.getActiveUser().getEmail()
+    var   company               = getInfoCompany(curemail)
+    var   CardCode              = genCode(company,GroupCode)
+    const U_CardCode1           = CardCode   
+    const title = 'CardCode\tCardCode01\tCardName\tGroupcode\tCmpPrivate\tFederalTaxID\tPhone1\tPhone2\tTel1\tTel2\tFax\tGroupNum\tCreditLine\tStreetNo\tStreet\tBlock\tState\tCity\tCountry\tName'
+    const datatest = CardCode+'\t'+ CardCode+'\t'+CardName+'\t'+ GroupCode2 +'\t'+ CmpPrivate+'\t'+ LicTradNum+'\t'+ Phone1+'\t'+ Phone2+'\t'+ Tel1+'\t'+ Tel2+'\t'+ Fax+'\t'+ GroupNum+'\t'+ CreditLine+'\t'+ StreetNo+'\t'+ Street+'\t'+ Block+'\t'+ State+'\t'+ City+'\t'+ Country+'\t'+ Name+'\t'
+    saveAsTXT(CardCode,datatest,title,company,curemail)
+  // SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/1B-cQYusdxcpzhvFsSFxaSyS7hURtG6NOLXKdvR7WAMw/edit#gid=0').getActiveSheet().appendRow([hoten,mst,sdt,nhom,nganh,loaikh,dtb1,dtdd2,thoihanno,hanmucno,dtb2,dtdd1,fax,diahchi,Session.getActiveUser().getEmail()])
 }

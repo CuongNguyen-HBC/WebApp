@@ -1,0 +1,156 @@
+
+    $('input[name="dtdd1"]').focusout(function(){
+        var sdt = this.value
+        $('#sdt-text').html(sdt)
+    })
+    $('input[name="mst"]').focusout(function(){
+        var mst = this.value
+        $('#mst-text').html(mst)
+    })
+    $('input[type="checkbox"]').each(function(){
+        $(this).change(function(){
+            if($(this).prop('checked')){
+                const nganh = $('input:checkbox:checked').map(function(){
+                return $(this).val()
+                })
+                $("#nganh-text").html(Array.from(nganh).toString())
+            }
+            
+        })
+    })
+
+
+            
+$(document).ready(function(){
+  $('.tabs').tabs();
+  $('select').formSelect();
+  checkInfo();
+  submitFormMetaData()
+
+});
+// Kiểm tra lại thông tin đã nhập hiển thị lên hơp đồng
+  function checkInfo(){
+    checkAddress();
+    $('input[name="ho"]').focusout(function(){
+        var hoten = this.value + ' '+ $('input[name="ten"]').val()
+        $('#hoten-text').html(hoten)
+    })
+    $('input[name="ten"]').focusout(function(){
+        var hoten =  $('input[name="ho"]').val() + ' '+ this.value 
+        $('#hoten-text').html(hoten)
+    })
+    $('select[name="nhom"]').change(function(){
+    var nhom = this.value
+    switch(nhom) {
+    case '02_Cust_Đại_Lý':
+      optionKhachConLai()
+      break;
+    case '03_Cust_Dự_Án':
+      optionDAXK()
+      break;
+    case '04_Cust_Lẻ':
+       optionKhachLe()
+      break;
+    case '05_Cust_Xuất_Khẩu':
+      optionDAXK()
+      break;
+    }
+        $('#nhom-text').html(nhom)
+    })
+    $('input[name="hanmucno"]').focusout(function(){
+      var hanmucno = this.value
+      if(hanmucno !== '')
+      $(this).val(hanmucno + '.000.000')
+      $('#hanmucno-text').html(hanmucno + '.000.000')
+    })
+  }
+// Gửi form lưu trữ metadata thông tin khách hàng
+  function submitFormMetaData(){
+      $('#formMetaData').submit(function(e){
+        event.preventDefault()
+        var validatecheck = validate()
+            if(!validatecheck)
+              return false
+          google.script.run.appendSpreadsheet(this)
+           $('input[name="ho"]').val('')
+           $('input[name="ten"]').val('')
+           $('input[name="sdt"]').val('')
+           $('input[name="mst"]').val('')
+           $('input[type="checkbox"]').prop('checked',false)
+           $('input').val('')    
+      })
+  }
+//Kiểm tra các trường dữ liệu
+function validate(){
+    var regPhone =  new RegExp("^0[1-9][0-9]{8,9}$"); 
+    console.log(regPhone.test( $('input[name="dtdd1"]').val()))
+  if(!regPhone.test( $('input[name="dtdd1"]').val())){
+      alert("SỐ ĐT ko hợp lệ")
+      return false;
+  }
+  return true;
+}
+// Nếu là Khách lẻ : Có thể chọn Company/private -> Không có MST -> Thanh toán tiền mặt hoặc HD (done)
+function optionKhachLe(){
+    $('input[name="mst"]').prop('readonly', true).val(' ').attr('required',false);
+    $('select[name="loaikh"] option').prop('disabled',false)
+    $('select[name="thoihanno"]').find('option').each(function(){
+     if($(this).val().includes("Thanh toán tiền mặt") || ($(this).val().includes("Theo hợp đồng"))){
+       $(this).prop('disabled',false)
+     }
+     $('select').formSelect()
+    })
+    $('select[name="thoihanno"]').change(function(){
+     var option = this.value
+     if(option == 'Theo hợp đồng'){
+       $('input[name="hanmucno"]').val('Theo hợp đồng').attr('disabled',true)
+     }else $('input[name="hanmucno"]').val(' ').attr('disabled',false)
+     M.updateTextFields();
+    })
+}
+// Nếu là còn lại: Chỉ có thể chọn Compnay -> Bắt buộc có MST -> Đại lý -> Tùy chọn thời hạn nợ -> Tùy chọn hạn mức công nợ  
+function optionKhachConLai(){
+ const loaikh = 'Công ty'
+ $('select[name="loaikh"]').find('option').each(function(){
+   if($(this).val().includes(loaikh))
+     $(this).attr('selected','selected').prop('disabled',false)
+ })
+ $('input[name="mst"]').prop('readonly', false).attr('required',true);
+ $('select[name="thoihanno"]').find('option').each(function(){
+     $(this).prop('disabled',false)
+     $('select').formSelect()
+    })
+}
+//                                                            -> Dự án/Xuất Khẩu -> Thời hạn nợ Theo Hợp đồng -> Hạn mức công nợ Theo Hợp Đồng
+function optionDAXK(){
+ const loaikh = 'Công ty'
+ const loaihd = 'Theo hợp đồng'
+ $('select[name="loaikh"]').find('option').prop('disabled',true)
+ $('select[name="thoihanno"]').find('option').prop('disabled',true)
+ $('select[name="loaikh"]').find('option[value="'+loaikh+'"]').attr('selected','selected').prop('disabled',false)
+ $('select[name="thoihanno"]').find('option[value="'+loaihd+'"]').attr('selected','selected').prop('disabled',false)
+ $('select').formSelect()
+ $('input[name="mst"]').prop('readonly', false).attr('required',true);
+ $('input[name="hanmucno"]').val('Theo hợp đồng').attr('disabled',true)
+ $('#thoihanno-text').html(loaihd)
+ $("#hanmucno-text").html(loaihd)
+ M.updateTextFields();
+}
+// Hiển thị thông tin địa chỉ trên hợp đồng theo các trường
+function checkAddress(){
+  $('select[name="thoihanno"]').change(function(){
+    var thoihanno = this.value
+    $('#thoihanno-text').html(thoihanno)
+  })
+  
+ $('.address').focusout(function(){
+   var sonha = $('input[name="sonha"]').val();
+   var tenduong = $('input[name="tenduong"]').val();
+   var phuongxa = $('input[name="phuongxa"]').val();
+   var quanhuyen = $('input[name="quanhuyen"]').val();
+   var tinhthanh = $('input[name="tinhthanh"]').val();
+   var quocgia = $('input[name="quocgia"]').val();
+   var address = sonha +' '+tenduong+' '+phuongxa+' '+quanhuyen+' '+tinhthanh+' '+quocgia
+   $('#address-text').html(address)
+ })
+}
